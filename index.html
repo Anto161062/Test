@@ -154,9 +154,38 @@
             </select>
         </form>
     </div>
-</body>
-</html>
-
-    </div>
+    <script>
+        function calcolaProfumo() {
+            let form = document.getElementById("testForm");
+            let risposte = {};
+            
+            for (let i = 0; i < form.elements.length; i++) {
+                if (form.elements[i].tagName === "SELECT") {
+                    let val = form.elements[i].value;
+                    risposte[val] = (risposte[val] || 0) + 1;
+                }
+            }
+            
+            let profumoFinale = Object.keys(risposte).reduce((a, b) => risposte[a] > risposte[b] ? a : b);
+            let relazione = getRelazione(profumoFinale);
+            
+            document.getElementById("risultato").innerHTML = `Il tuo profumo perfetto è: <br><span style="color:#1e90ff; font-size: 2.5em; font-weight: bold; font-family: 'Playfair Display', serif;">${profumoFinale}</span><br><br><p style="font-size: 1.2em; color:#555; font-family: 'Playfair Display', serif;">${relazione}</p>`;
+        }
+        
+        function getRelazione(profumo) {
+            let descrizioni = {
+                "Lavanda e Menta": "Questo profumo è perfetto per te che cerchi calma e armonia. La combinazione di lavanda e menta rilassa la mente e ti aiuta a trovare equilibrio nelle giornate più intense.",
+                "Citri Fructus": "Sei una persona energica e solare. Questo profumo agrumato rinfresca e stimola, accompagnandoti nelle tue giornate dinamiche.",
+                "Vigna Rossa": "Ami il calore e la convivialità. Le note avvolgenti e speziate di questo profumo rispecchiano il tuo spirito intenso e passionale.",
+                "Oltremare": "Hai un’anima libera e avventurosa. Questo profumo evoca la brezza marina e la libertà degli spazi aperti, perfetto per chi ama esplorare.",
+                "Sapientia": "Sei riflessivo e saggio, ami la calma e la profondità del pensiero. Questo profumo dalle note profonde e rilassanti ti aiuta a concentrarti e meditare.",
+                "Vaniglia Nera": "Ami la raffinatezza e il lusso. Questo profumo avvolgente e seducente rispecchia il tuo carisma e il tuo fascino magnetico.",
+                "Anima": "Sei emotivo e profondo, guidato dalle sensazioni e dai sentimenti. Questo profumo intenso e avvolgente è perfetto per accompagnarti nei tuoi momenti di introspezione.",
+                "Eucalipto": "Ami la freschezza e la purezza. Questo profumo pulito e rigenerante dona un senso di benessere e vitalità, perfetto per la tua energia positiva.",
+                "Risveglio": "Sei una persona piena di vitalità e positività. Questo profumo rappresenta il tuo spirito vivace e la tua voglia di fare, con note fresche e avvolgenti che stimolano la mente e il corpo."
+            };
+            return descrizioni[profumo] || "Un profumo speciale che riflette il tuo carattere unico!";
+        }
+    </script>
 </body>
 </html>
