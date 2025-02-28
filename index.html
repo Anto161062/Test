@@ -192,7 +192,7 @@
             function mostraQRCode() {
             let qrCodeURL = "https://anto161062.github.io/catalogo/"; // Sostituisci con l'URL reale del QR code
             let qrCodeHTML = `<br><br><img src='${qrCodeURL}' alt='QR Code Catalogo' style='width:200px; height:200px; margin-top:20px;'>`;
-            document.getElementById("risultato").innerHTML += qrCodeHTML;
+            document.getElementById("risultato").innerHTML += `<br><br><img src='qr-code.png' alt='QR Code Catalogo' style='width:200px; height:200px; margin-top:20px;'>`;
         }
 
         function calcolaProfumo() {
