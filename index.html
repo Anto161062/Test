@@ -74,63 +74,65 @@
 <body>
     <div class="container">
         <h1>Scopri il tuo Profumo Perfetto!</h1>
-        <p><strong>Come funziona?</strong> Clicca sulle caselle per rispondere alle domande e scopri la fragranza più adatta a te.</p>
+        <p><strong>Rispondi alle domande</strong> e ottieni un'analisi personalizzata della tua fragranza ideale.</p>
         
         <form id="testForm">
-            <div class="question">1️⃣ Come reagisci dopo una giornata intensa?</div>
+            <div class="question">1️⃣ Dopo una giornata intensa, cosa cerchi di più?</div>
             <select name="domanda1">
-                <option value="Lavanda e Menta" data-color="#8B5CF6">Cerco tranquillità e relax 🧘</option>
-                <option value="Citri Fructus" data-color="#FFA500">Mi serve energia per scaricare la tensione 🏃</option>
-                <option value="Risveglio" data-color="#FFD700">Ascolto musica per ricaricarmi 🎵</option>
-                <option value="Sapientia" data-color="#6A5ACD">Leggo un libro per riflettere 📖</option>
+                <option value="Lavanda e Menta">Relax e serenità 🧘</option>
+                <option value="Citri Fructus">Energia e ricarica 🏃</option>
+                <option value="Vigna Rossa">Calore e intimità 🍷</option>
+                <option value="Oltremare">Libertà e leggerezza 🌊</option>
             </select>
             
             <div class="question">2️⃣ Qual è il tuo spazio ideale?</div>
             <select name="domanda2">
-                <option value="Vigna Rossa" data-color="#B22222">Un salotto accogliente con luci soffuse 🍷</option>
-                <option value="Eucalipto" data-color="#2E8B57">Un ambiente fresco e minimalista 🏡</option>
-                <option value="Vaniglia Nera" data-color="#8B4513">Un luogo elegante e raffinato 🖤</option>
-                <option value="Oltremare" data-color="#1E90FF">Uno spazio aperto con vista mare 🌊</option>
+                <option value="Vigna Rossa">Un salotto accogliente con luci soffuse 🍷</option>
+                <option value="Eucalipto">Un ambiente fresco e minimalista 🌿</option>
+                <option value="Vaniglia Nera">Un luogo elegante e raffinato 🖤</option>
+                <option value="Oltremare">Uno spazio aperto con vista mare 🌊</option>
             </select>
             
-            <div class="question">3️⃣ Qual è la tua più grande esigenza emotiva?</div>
+            <div class="question">3️⃣ Cosa rappresenta per te il profumo?</div>
             <select name="domanda3">
-                <option value="Anima" data-color="#D2691E">Condivisione e relazioni profonde 🤝</option>
-                <option value="Oltremare" data-color="#4682B4">Libertà e avventura 🌿</option>
-                <option value="Lavanda e Menta" data-color="#8A2BE2">Equilibrio e serenità 🧘‍♂️</option>
-                <option value="Vaniglia Nera" data-color="#A0522D">Eleganza e distinzione ✨</option>
-            </select>
-            
-            <div class="question">4️⃣ Quale esperienza sensoriale preferisci?</div>
-            <select name="domanda4">
-                <option value="Citri Fructus" data-color="#FFA500">Il profumo degli agrumi 🍊</option>
-                <option value="Vigna Rossa" data-color="#B22222">Il calore del legno e spezie 🌲</option>
-                <option value="Eucalipto" data-color="#2E8B57">L’aria fresca e pulita 💨</option>
-                <option value="Vaniglia Nera" data-color="#8B4513">La dolcezza della vaniglia 🍫</option>
-            </select>
-            
-            <div class="question">5️⃣ Cosa significa per te il profumo?</div>
-            <select name="domanda5">
-                <option value="Citri Fructus" data-color="#FFA500">Energia e vitalità 🏃‍♂️</option>
-                <option value="Anima" data-color="#D2691E">Un rifugio emotivo 🛀</option>
-                <option value="Sapientia" data-color="#6A5ACD">Concentrazione e ispirazione 📚</option>
-                <option value="Vaniglia Nera" data-color="#A0522D">Un simbolo di stile 💎</option>
+                <option value="Anima">Un rifugio emotivo 🛀</option>
+                <option value="Citri Fructus">Energia e motivazione 💪</option>
+                <option value="Sapientia">Concentrazione e ispirazione 📖</option>
+                <option value="Vaniglia Nera">Un tocco di lusso ✨</option>
             </select>
             
             <button type="button" class="button" onclick="calcolaProfumo()">Scopri il tuo Profumo</button>
         </form>
         
         <h2 id="risultato" class="result"></h2>
+        <p id="descrizione"></p>
     </div>
     
     <script>
         function calcolaProfumo() {
             let form = document.getElementById("testForm");
-            let selectedOption = form.elements["domanda1"].selectedOptions[0];
-            let profumoScelto = selectedOption.value;
-            let color = selectedOption.getAttribute("data-color");
+            let risposte = {};
+            for (let i = 0; i < form.elements.length; i++) {
+                if (form.elements[i].tagName === "SELECT") {
+                    let val = form.elements[i].value;
+                    risposte[val] = (risposte[val] || 0) + 1;
+                }
+            }
             
-            document.getElementById("risultato").innerHTML = `Il tuo profumo perfetto è:<br><span style="color: ${color}; font-size: 2.5em; font-weight: bold; font-family: 'Playfair Display', serif;">${profumoScelto}</span>`;
+            let profumoFinale = Object.keys(risposte).reduce((a, b) => risposte[a] > risposte[b] ? a : b);
+            let descrizioni = {
+                "Vigna Rossa": "Il calore avvolgente di una serata in compagnia.",
+                "Citri Fructus": "Un’esplosione di energia e vitalità per la tua giornata.",
+                "Lavanda e Menta": "Un'oasi di tranquillità e benessere mentale.",
+                "Oltremare": "La freschezza del mare e la libertà di spazi aperti.",
+                "Vaniglia Nera": "Eleganza e raffinatezza in ogni respiro.",
+                "Eucalipto": "Una boccata d’aria pura e rigenerante.",
+                "Anima": "Un profumo che parla di introspezione e profondità.",
+                "Sapientia": "Perfetto per chi cerca concentrazione e ispirazione."
+            };
+            
+            document.getElementById("risultato").innerHTML = `Il tuo profumo perfetto è: <br><span style="color:#1e90ff; font-size: 2.5em; font-weight: bold; font-family: 'Playfair Display', serif;">${profumoFinale}</span>`;
+            document.getElementById("descrizione").innerHTML = descrizioni[profumoFinale];
         }
     </script>
 </body>
