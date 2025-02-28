@@ -117,24 +117,25 @@
                 <option value="Vaniglia Nera">Elegante e sofisticato ✨</option>
             </select>
             
-            <div class="question">6️⃣ Quale stagione ti rappresenta di più?</div>
-            <select name="domanda6">
-                <option value="Citri Fructus">Estate ☀️</option>
-                <option value="Vigna Rossa">Autunno 🍂</option>
-                <option value="Lavanda e Menta">Primavera 🌸</option>
-                <option value="Sapientia">Inverno ❄️</option>
-            </select>
-            
-            <div class="question">7️⃣ Qual è il tuo momento della giornata preferito?</div>
-            <select name="domanda7">
-                <option value="Risveglio">Mattina 🌅</option>
-                <option value="Citri Fructus">Pomeriggio 🌞</option>
-                <option value="Vigna Rossa">Sera 🌙</option>
-                <option value="Anima">Notte 🌌</option>
-            </select>
-            
             <button type="button" class="button" onclick="calcolaProfumo()">Scopri il tuo Profumo</button>
         </form>
+        
+        <h2 id="risultato" class="result"></h2>
     </div>
+    
+    <script>
+        function calcolaProfumo() {
+            let form = document.getElementById("testForm");
+            let risposte = {};
+            for (let i = 0; i < form.elements.length; i++) {
+                if (form.elements[i].tagName === "SELECT") {
+                    let val = form.elements[i].value;
+                    risposte[val] = (risposte[val] || 0) + 1;
+                }
+            }
+            let profumoFinale = Object.keys(risposte).reduce((a, b) => risposte[a] > risposte[b] ? a : b);
+            document.getElementById("risultato").innerHTML = `Il tuo profumo perfetto è: <br><span style="color:#1e90ff; font-size: 2.5em; font-weight: bold; font-family: 'Playfair Display', serif;">${profumoFinale}</span>`;
+        }
+    </script>
 </body>
 </html>
