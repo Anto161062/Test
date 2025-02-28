@@ -77,28 +77,6 @@
         <p><strong>Rispondi alle domande</strong> e ottieni un'analisi personalizzata della tua fragranza ideale.</p>
         
         <form id="testForm">
-            <div class="question">1️⃣ Dopo una giornata intensa, cosa cerchi di più?</div>
-            <select name="domanda1">
-                <option value="Lavanda e Menta">Relax e serenità 🧘</option>
-                <option value="Citri Fructus">Energia e ricarica 🏃</option>
-                <option value="Vigna Rossa">Calore e intimità 🍷</option>
-                <option value="Oltremare">Libertà e leggerezza 🌊</option>
-                <option value="Sapientia">Concentrazione e ispirazione 📖</option>
-                <option value="Vaniglia Nera">Un tocco di lusso ✨</option>
-                <option value="Anima">Un rifugio emotivo 🛀</option>
-            </select>
-            
-            <div class="question">2️⃣ Qual è il tuo spazio ideale?</div>
-            <select name="domanda2">
-                <option value="Vigna Rossa">Un salotto accogliente con luci soffuse 🍷</option>
-                <option value="Eucalipto">Un ambiente fresco e minimalista 🌿</option>
-                <option value="Vaniglia Nera">Un luogo elegante e raffinato 🖤</option>
-                <option value="Oltremare">Uno spazio aperto con vista mare 🌊</option>
-                <option value="Citri Fructus">Un ambiente luminoso e vivace ☀️</option>
-                <option value="Risveglio">Un luogo pieno di energia e vitalità 🌅</option>
-                <option value="Anima">Uno spazio intimo e profondo 🌌</option>
-            </select>
-            
             <div class="question">3️⃣ Quale emozione ti guida di più?</div>
             <select name="domanda3">
                 <option value="Anima">Connessione e introspezione 🌌</option>
@@ -153,58 +131,7 @@
                 <option value="Vaniglia Nera">Carisma e attrazione ✨</option>
                 <option value="Oltremare">Esplorazione e indipendenza 🌊</option>
             </select>
-            <button type="button" class="button" onclick="calcolaProfumo()">Scopri il tuo Profumo</button>
         </form>
-        
-        <h2 id="risultato" class="result"></h2>
     </div>
-    
-    <script>
-        function calcolaProfumo() {
-            let form = document.getElementById("testForm");
-            let risposte = {};
-            
-            for (let i = 0; i < form.elements.length; i++) {
-                if (form.elements[i].tagName === "SELECT") {
-                    let val = form.elements[i].value;
-                    risposte[val] = (risposte[val] || 0) + 1;
-                }
-            }
-            
-            let profumoFinale = Object.keys(risposte).reduce((a, b) => risposte[a] > risposte[b] ? a : b);
-            
-            document.getElementById("risultato").innerHTML = `Il tuo profumo perfetto è: <br><span style="color:#1e90ff; font-size: 2.5em; font-weight: bold; font-family: 'Playfair Display', serif;">${profumoFinale}</span>`;
-        }
-            function getRelazione(profumo) {
-            let descrizioni = {
-                "Lavanda e Menta": "Hai un'anima tranquilla e riflessiva. Cerchi equilibrio e serenità nelle tue giornate, e questo profumo ti aiuta a mantenere una sensazione di pace interiore.",
-                "Citri Fructus": "Sei una persona energica e solare, sempre in movimento. Il tuo spirito dinamico e positivo trova stimolo nelle note agrumate e fresche di questo profumo.",
-                "Vigna Rossa": "Ami il calore e la convivialità. Sei passionale, intenso e ti piace creare un'atmosfera accogliente. Questo profumo è perfetto per chi ama il comfort e la profondità delle emozioni.",
-                "Oltremare": "Hai un'anima libera e indipendente. Ami l'esplorazione, i grandi spazi e la sensazione di libertà. Questo profumo evoca la freschezza del mare e l'orizzonte infinito.",
-                "Sapientia": "Ti piace riflettere, leggere e trovare ispirazione nella calma. Sei una persona profonda e meditativa, e questo profumo si adatta perfettamente alla tua ricerca interiore.",
-                "Vaniglia Nera": "Eleganza e raffinatezza sono i tuoi tratti distintivi. Sei affascinante, sicuro di te e ami circondarti di cose belle e sofisticate. Questo profumo ti accompagnerà con il suo tocco di lusso.",
-                "Anima": "La tua essenza è emotiva e introspettiva. Ti piace immergerti nei tuoi pensieri e vivere le emozioni in profondità. Questo profumo ti avvolgerà con la sua intensità e dolcezza.",
-                "Eucalipto": "Ami la freschezza, la chiarezza mentale e l'energia rigenerante della natura. Questo profumo ti dona una sensazione di leggerezza e concentrazione, perfetta per la tua personalità dinamica."
-            };
-            return descrizioni[profumo] || "Un profumo speciale che riflette il tuo carattere unico!";
-        }
-
-        function calcolaProfumo() {
-            let form = document.getElementById("testForm");
-            let risposte = {};
-            
-            for (let i = 0; i < form.elements.length; i++) {
-                if (form.elements[i].tagName === "SELECT") {
-                    let val = form.elements[i].value;
-                    risposte[val] = (risposte[val] || 0) + 1;
-                }
-            }
-            
-            let profumoFinale = Object.keys(risposte).reduce((a, b) => risposte[a] > risposte[b] ? a : b);
-            let relazione = getRelazione(profumoFinale);
-            
-            document.getElementById("risultato").innerHTML = `Il tuo profumo perfetto è: <br><span style="color:#1e90ff; font-size: 2.5em; font-weight: bold; font-family: 'Playfair Display', serif;">${profumoFinale}</span><br><br><p style="font-size: 1.2em; color:#555;">${relazione}</p>`;
-        }
-    </script>
 </body>
 </html>
