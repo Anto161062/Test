@@ -76,7 +76,8 @@
         <h1>Scopri il tuo Profumo Perfetto!</h1>
         <p><strong>Rispondi alle domande</strong> e ottieni un'analisi personalizzata della tua fragranza ideale.</p>
         
-        <form id="testForm">
+        <div id="testContainer" style="display: none;">
+<form id="testForm">
             <div class="question">1️⃣ Dopo una giornata intensa, cosa cerchi di più?</div>
             <select name="domanda1">
                 <option value="Lavanda e Menta">Relax e serenità 🧘</option>
@@ -87,7 +88,6 @@
                 <option value="Vaniglia Nera">Un tocco di lusso ✨</option>
                 <option value="Anima">Un rifugio emotivo 🛀</option>
             </select>
-            
             <div class="question">2️⃣ Qual è il tuo spazio ideale?</div>
             <select name="domanda2">
                 <option value="Vigna Rossa">Un salotto accogliente con luci soffuse 🍷</option>
@@ -98,7 +98,6 @@
                 <option value="Risveglio">Un luogo pieno di energia e vitalità 🌅</option>
                 <option value="Anima">Uno spazio intimo e profondo 🌌</option>
             </select>
-            
             <div class="question">3️⃣ Quale emozione ti guida di più?</div>
             <select name="domanda3">
                 <option value="Anima">Connessione e introspezione 🌌</option>
@@ -109,7 +108,6 @@
                 <option value="Vaniglia Nera">Eleganza e raffinatezza ✨</option>
                 <option value="Sapientia">Saggezza e calma 📖</option>
             </select>
-            
             <div class="question">4️⃣ Quale esperienza sensoriale preferisci?</div>
             <select name="domanda4">
                 <option value="Citri Fructus">Il profumo degli agrumi 🍊</option>
@@ -120,7 +118,6 @@
                 <option value="Oltremare">La brezza marina e il sale 🌊</option>
                 <option value="Sapientia">L’essenza profonda e meditativa 📖</option>
             </select>
-            
             <div class="question">5️⃣ Qual è il tuo momento della giornata preferito?</div>
             <select name="domanda5">
                 <option value="Risveglio">Mattina 🌅</option>
@@ -141,7 +138,6 @@
                 <option value="Vaniglia Nera">L’autunno elegante 🎩</option>
                 <option value="Anima">L’inverno profondo 🌌</option>
             </select>
-            
             <div class="question">7️⃣ Qual è la tua energia dominante?</div>
             <select name="domanda7">
                 <option value="Risveglio">Vitalità e positività 🌅</option>
@@ -152,9 +148,10 @@
                 <option value="Vaniglia Nera">Carisma e attrazione ✨</option>
                 <option value="Oltremare">Esplorazione e indipendenza 🌊</option>
             </select>
-            
             <button type="button" class="button" onclick="calcolaProfumo()">Scopri il tuo Profumo</button>
         </form>
+</div>
+<button onclick="mostraTest()" class="button">👉 Fai il test ora</button>
         
         <h2 id="risultato" class="result"></h2>
     </div>
@@ -333,8 +330,5 @@
         <p>📧 Email: info@mysenza1.com</p>
         <p>📍 Sede: Milano, Italia</p>
     </div>
-</body>
-</html>
-
 </body>
 </html>
